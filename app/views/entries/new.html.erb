@@ -1,2 +1,26 @@
-<h1>Entries#new</h1>
-<p>Find me in app/views/entries/new.html.erb</p>
+<h1>New Post for <%= @place.name %></h1>
+
+<%= form_with model: [@place, @entry], local: true do |f| %>
+  <div>
+    <%= f.label :title, "Title" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description" %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :posted_on, "Date" %><br>
+    <%= f.date_field :posted_on %>
+  </div>
+
+  <div>
+    <%= f.submit "Create Post" %>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to "← Back to #{@place.name}", place_path(@place) %>
+</p>

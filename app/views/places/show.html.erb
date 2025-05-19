@@ -1,2 +1,22 @@
-<h1>Places#show</h1>
-<p>Find me in app/views/places/show.html.erb</p>
+<h1><%= @place.name %></h1>
+
+<p>
+  <%= link_to "← Back to Places", places_path %>
+</p>
+
+<% if @entries.any? %>
+  <% @entries.each do |entry| %>
+    <div class="entry">
+      <h2><%= entry.title %></h2>
+      <small><%= entry.posted_on %></small>
+      <p><%= entry.description %></p>
+    </div>
+    <hr>
+  <% end %>
+<% else %>
+  <p>No entries yet.</p>
+<% end %>
+
+<p>
+  <%= link_to "New Post", new_place_entry_path(@place) %>
+</p>
